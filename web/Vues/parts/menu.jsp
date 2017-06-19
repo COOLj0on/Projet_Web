@@ -15,13 +15,13 @@
                     <li><a href="#">Accueil</a></li>
 
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Formation <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">QCM <b class="caret"></b></a>
                         <span class="dropdown-arrow"></span>
                         <ul class="dropdown-menu">
-                            <li><a href="<c:url value="http://localhost:8080/TPWeb/Formation"></c:url>">Formations</a></li>
-                            <c:if test="${sessionScope.animateur != null}">
+                            <li><a href="<c:url value="http://localhost:8080/QCM/Test"></c:url>">Listes des QCM</a></li>
+                            <c:if test="${sessionScope.formateur != null}">
                                 <li class="divider"></li>
-                                <li><a href="<c:url value="http://localhost:8080/TPWeb/Formation?action=gerer"></c:url>">Gérer les formations</a></li>
+                                <li><a href="<c:url value="http://localhost:8080/QCM/Test?action=gerer"></c:url>">Gérer les QCM</a></li>
                             </c:if>
                         </ul>
                     </li>
