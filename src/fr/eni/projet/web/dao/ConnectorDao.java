@@ -10,7 +10,7 @@ public class ConnectorDao  {
 		Connection conn = null;
       try {
          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-         conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=TPJavaEE_GestionFormations","sa", "Pa$$w0rd");
+         conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=Projet_Web","sa", "Pa$$w0rd");
          System.out.println("Connected to the database");
       } catch (Exception e) {
     	 System.err.println("Database connection failed");

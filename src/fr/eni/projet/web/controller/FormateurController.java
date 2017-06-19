@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet("/formateur")
+@WebServlet("/Formateur")
 public class FormateurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String nextAction = "/Vues/Formateur/authent.jsp";
@@ -52,7 +52,14 @@ public class FormateurController extends HttpServlet {
 		Map<String, String[]> params = request.getParameterMap();
 		boolean continu = true;
 		try{
-			if(params.containsKey("action")){
+			if (params.containsKey("identifiant") && !params.get("identifiant").toString().isEmpty()) {//En cours d'authent
+				if (params.containsKey("password") && !params.get("password").toString().isEmpty()) {
+					connect(request, response);
+				} else {
+					request.setAttribute("error", "Pas de mot de passe renseigné");
+					nextAction = "/Vues/Formateur/authent.jsp";
+				}
+			} else if(params.containsKey("action")){
 				switch (params.get("action")[0]){
 					default:
 

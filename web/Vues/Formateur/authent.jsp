@@ -6,17 +6,17 @@
     <div class="col-md-offset-4 col-md-8">
         <fieldset>
             <legend>Connexion</legend>
-            <form action="FormateurController" method="POST">
+            <form action="" method="">
                 <div class="form-group">
                     <label for="identifiant" class="col-lg-2 control-label">Identifiant</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" id="identifiant" placeholder="identifiant">
+                        <input type="text" class="form-control" name="identifiant" id="identifiant" placeholder="identifiant">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-lg-2 control-label">Identifiant</label>
                     <div class="col-lg-10">
-                        <input type="password" class="form-control" id="password" placeholder="mot de passe">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="mot de passe">
                     </div>
                 </div>
                 <div class="form-group">
