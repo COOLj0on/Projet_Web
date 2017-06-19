@@ -11,14 +11,16 @@ import java.util.Map;
 /**
  * Created by jdiaz2016 on 19/06/2017.
  */
-@WebServlet(name = "Test")
-public class TestServlet extends HttpServlet {
+@WebServlet(name = "/Test")
+public class TestController extends HttpServlet {
     private String nextAction="/Vues/Test/index.jsp";
-
-
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
+    }
+
+    public void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        nextAction="/Vues/Test/index.jsp";
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

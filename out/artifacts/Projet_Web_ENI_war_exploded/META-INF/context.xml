@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<Context>
-    <Resource name="jdbc/tp_web" auth="Container" type="javax.sql.DataSource"
-              maxActive="20" maxIdle="10" maxWait="100000" username="sa"
-              password="Pa$$w0rd" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
-              url="jdbc:sqlserver://localhost:1433;DatabaseName=Projet_Web"
-              validationQuery="select 1" testOnBorrow="true" />
-</Context>
