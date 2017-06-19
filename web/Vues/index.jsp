@@ -1,16 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jdiaz2016
-  Date: 19/06/2017
-  Time: 11:02
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  $END$
-  </body>
-</html>
+<jsp:include page="parts/header.jsp"/>
+<jsp:include page="parts/menu.jsp"/>
+
+
+<jsp:include page="parts/footer.jsp"/>
