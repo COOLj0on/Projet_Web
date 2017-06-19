@@ -2,6 +2,7 @@ package fr.eni.projet.web.controller;
 
 
 import fr.eni.projet.web.bean.Formateur;
+import fr.eni.projet.web.dao.formateur.FormateurDaoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +33,7 @@ public class FormateurController extends HttpServlet {
 		String identifiant 			= request.getParameter("identifiant");
 		Formateur formateur 		= null;
 		try {
-			formateur = Formateur.getInstance().checkCredentials(identifiant, password);
+			formateur = FormateurDaoImpl.getInstance().checkCredentials(identifiant, password);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
