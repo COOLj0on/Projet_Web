@@ -19,10 +19,10 @@
                 <td>JOJO l'abricot</td>
                 <td>Autre truc</td>
                 <td>
-                    <div class="btn-group" role="group" aria-label="">
-                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Modifier</a>
-                        <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Détails</a>
-                        <a href="#" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Supprimer</a>
+                    <div class="btn-group btn-group-sm" role="group" aria-label="">
+                        <a href="#" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Modifier</a>
+                        <a href="#" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>Détails</a>
+                        <a href="#" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Supprimer</a>
                     </div>
                 </td>
             </tr>
