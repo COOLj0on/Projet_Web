@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(value = "/Formateur")
+@WebServlet("/Formateur")
 public class FormateurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String nextAction = "/Vues/index.jsp";

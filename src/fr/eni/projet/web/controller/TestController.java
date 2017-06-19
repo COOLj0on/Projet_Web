@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Created by jdiaz2016 on 19/06/2017.
  */
-@WebServlet(name = "/Test")
+@WebServlet("/Test")
 public class TestController extends HttpServlet {
     private String nextAction="/Vues/Test/index.jsp";
 
