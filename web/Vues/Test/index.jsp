@@ -3,7 +3,7 @@
 <jsp:include page="../parts/menu.jsp"/>
 <div class="row">
     <div class="col-md-12">
-        <table class="table-striped">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Id</th>
