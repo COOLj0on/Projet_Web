@@ -66,7 +66,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return "Question{" +
+        return "question{" +
                 "idQuestion=" + idQuestion +
                 ", enonce='" + enonce + '\'' +
                 ", image='" + image + '\'' +

@@ -63,7 +63,7 @@ public class Formateur {
 
     @Override
     public String toString() {
-        return "Formateur{" +
+        return "formateur{" +
                 "idFormateur=" + idFormateur +
                 ", identifiant='" + identifiant + '\'' +
                 ", mdp='" + mdp + '\'' +
