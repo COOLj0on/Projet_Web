@@ -46,7 +46,7 @@ public class Theme {
 
     @Override
     public String toString() {
-        return "Theme{" +
+        return "theme{" +
                 "idTheme=" + idTheme +
                 ", libelle='" + libelle + '\'' +
                 ", question=" + question +

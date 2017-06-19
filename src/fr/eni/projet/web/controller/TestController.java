@@ -1,5 +1,9 @@
 package fr.eni.projet.web.controller;
 
+import fr.eni.projet.web.bean.Question;
+import fr.eni.projet.web.bean.Theme;
+import fr.eni.projet.web.dao.question.QuestionDaoImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +27,24 @@ public class TestController extends HttpServlet {
         nextAction="/Vues/Test/index.jsp";
     }
 
+    public void testAction() throws Exception {
+        try{
+            String enonce = "Enonce test";
+            String image = "Image test";
+            Theme theme = new Theme();
+            theme.setLibelle("test");
+            Integer idTheme = 1;
+            Question newQuestion = new Question();
+            newQuestion.setEnonce(enonce);
+            newQuestion.setImage(image);
+            newQuestion.setTheme(theme);
+
+            QuestionDaoImpl.getInstance().insert(newQuestion, idTheme);
+        }catch (Exception e){
+            System.err.print(e);
+        }
+    }
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> params = request.getParameterMap();
         boolean continu = true;
@@ -36,6 +58,7 @@ public class TestController extends HttpServlet {
                         break;
                 }
             }else{
+                testAction();
                 index(request,response);
             }
             if(continu){

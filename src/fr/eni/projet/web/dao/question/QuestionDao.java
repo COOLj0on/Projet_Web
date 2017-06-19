@@ -8,7 +8,7 @@ import fr.eni.projet.web.bean.Theme;
  */
 public interface QuestionDao {
 
-    public Question insert(Question uneQuestion) throws Exception;
+    public void insert(Question uneQuestion, Integer idTheme) throws Exception;
 
 
 }
