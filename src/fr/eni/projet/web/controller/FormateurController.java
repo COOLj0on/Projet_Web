@@ -2,30 +2,26 @@ package fr.eni.projet.web.controller;
 
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-public class FormationController extends HttpServlet {
+@WebServlet(value = "/Formateur")
+public class FormateurController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private String nextAction = "";
+	private String nextAction = "/Vues/index.jsp";
 
-    public FormationController() {
+    public FormateurController() {
         super();
     }
     
     //Default view, the list of all formations
     public void index(HttpServletRequest request, HttpServletResponse response)throws Exception{
-
-		nextAction = "/Vues/formation/formation.jsp";
+		nextAction = "/Vues/index.jsp";
     }
-
-    public void listAll(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-		nextAction = "/Vues/formation/gerer.jsp";
-	}
 
 	public void listJson(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		/*List<FormationBean> liste = FormationDaoImpl.getInstance().selectAll();
@@ -37,15 +33,11 @@ public class FormationController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		nextAction = "/Vues/formation/formation.jsp";
 		Map<String, String[]> params = request.getParameterMap();
 		boolean continu = true;
 		try{
 			if(params.containsKey("action")){
 				switch (params.get("action")[0]){
-					case "gerer":
-						listAll(request,response);
-						break;
 					case "getJson":
 						listJson(request,response);
 						continu = false;
