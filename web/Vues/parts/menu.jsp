@@ -20,8 +20,18 @@
                         <li><a href="<c:url value="http://localhost:8080/Test"></c:url>">Listes des QCM</a></li>
                         <c:if test="${sessionScope.formateur != null}">
                             <li class="divider"></li>
-                            <li><a href="<c:url value="http://localhost:8080/Test?action=gerer"></c:url>">Gérer les
-                                QCM</a></li>
+                            <li><a href="<c:url value="http://localhost:8080/Test?action=gerer"></c:url>">Gérer les QCM</a></li>
+                        </c:if>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thèmes <b class="caret"></b></a>
+                    <span class="dropdown-arrow"></span>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/Theme">Listes des thèmes</a></li>
+                        <c:if test="${sessionScope.formateur != null}">
+                            <li class="divider"></li>
+                            <li><a href="${pageContext.request.contextPath}/Theme?action=new">Créer un thème</a></li>
                         </c:if>
                     </ul>
                 </li>
