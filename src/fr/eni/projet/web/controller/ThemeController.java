@@ -45,7 +45,7 @@ public class ThemeController extends HttpServlet {
     }
 
     public void index(HttpServletRequest request, HttpServletResponse response){
-        List<Theme> formations = new ArrayList<>();//ThemeDAOImpl.getInstance().selectAll();
+        List<Theme> formations = ThemeDAOImpl.getInstance().selectAllTheme();
         this.getServletContext().setAttribute("formations", formations);
         nextAction = "/Vues/Theme/index.jsp";
     }
@@ -113,6 +113,8 @@ public class ThemeController extends HttpServlet {
 
                         break;
                 }
+            }else{
+                index(request, response);
             }
             if(continu){
                 this.getServletContext().getRequestDispatcher(nextAction).forward(request, response);
