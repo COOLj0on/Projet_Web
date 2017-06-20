@@ -28,52 +28,39 @@ public class QuestionDaoImpl implements QuestionDao {
         return instance;
     }
 
+    public Question selectQuestionByID(Integer idTheme) {
+        Connection con = null;
+        con = ConnectionPool.getConPool();
+        boolean flag = true;
 
-//    public Question selectQuestionByID(Integer idQuestion) {
-//        Connection con = null;
-//        con = ConnectionPool.getConPool();
-//        boolean flag = true;
-//
-//        String sql = "SELECT idQuestion, enonce, image, fk_theme FROM Question q JOIN Theme t ON q.fk_theme = t.idTheme WHERE t.idTheme=?";
-//
-//        PreparedStatement stmt;
-//        Question cesQuestion = null;
-//
-//        try {
-//            stmt = con.prepareStatement(sql);
-//            stmt.setInt(1, idQuestion);
-//            ResultSet rs = stmt.executeQuery();
-//
-//            while (rs.next()) {
-//                if(flag)
-//                {
-//                    cesQuestion = new Question();
-//                    cesQuestion.setId(rs.getInt("idTheme"));
-//                    cesQuestion.setLibelle(rs.getString("libelle"));
-//                    //ceTheme.se((rs.getFloat("distance")));
-//
-//                }
-//                Question laQuestion = new Question();
-//                laQuestion.setIdQuestion(rs.getInt("idQuestion"));
-//                laQuestion.setEnonce(rs.getString("enonce"));
-//                laQuestion.setImage(rs.getNString("image"));
-//                laQuestion.setTheme(ceTheme);
-//                ceTheme.getQuestion().add(laQuestion);
-//                flag = false;
-//
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }finally {
-//            try {
-//                con.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//    }
+        String sql = "SELECT idQuestion, enonce, image, fk_theme FROM Question q JOIN Theme t ON q.fk_theme = t.idTheme WHERE t.idTheme=?";
+
+        PreparedStatement stmt;
+        Question cesQuestion = null;
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idTheme);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                    cesQuestion = new Question();
+                    cesQuestion.setIdQuestion(rs.getInt("idQuestion"));
+                    cesQuestion.setEnonce(rs.getString("enonce"));
+                    cesQuestion.setImage(rs.getString("image"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    return cesQuestion;
+    }
 
 
     public List<Question> selectAll() throws Exception{
