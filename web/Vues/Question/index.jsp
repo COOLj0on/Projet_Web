@@ -22,7 +22,7 @@
                     <td>
                         <div class="col-xs-6 col-md-3">
                             <a href="#" class="thumbnail">
-                                <img src="..." alt="...">
+                                <img src="http://localhost:8080/img/uploaded/${question.image}" alt="">
                             </a>
                         </div>
                     </td>

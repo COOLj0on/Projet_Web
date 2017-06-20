@@ -35,6 +35,17 @@
                         </c:if>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Questions <b class="caret"></b></a>
+                    <span class="dropdown-arrow"></span>
+                    <ul class="dropdown-menu">
+                        <li><a href="${pageContext.request.contextPath}/Question">Listes des questions</a></li>
+                        <c:if test="${sessionScope.formateur != null}">
+                            <li class="divider"></li>
+                            <li><a href="${pageContext.request.contextPath}/Theme?action=new">Créer une question</a></li>
+                        </c:if>
+                    </ul>
+                </li>
             </ul>
             <c:choose>
                 <c:when test = "${sessionScope.formateur == null}">
