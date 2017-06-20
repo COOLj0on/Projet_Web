@@ -37,7 +37,7 @@ public class ThemeDAOImpl implements ThemeDAO {
 
         String sql = "select * from theme t " +
                 "left outer join Question q " +
-                "on t.idTheme = q.fk_theme" +
+                "on t.idTheme = q.fk_theme " +
                 "where idTheme = ?";
 
         PreparedStatement stmt;

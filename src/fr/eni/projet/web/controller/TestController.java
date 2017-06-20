@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -46,6 +48,15 @@ public class TestController extends HttpServlet {
         }
     }
 
+    public void selectAll() throws Exception {
+        List<Question> question = new ArrayList<Question>();
+        question = QuestionDaoImpl.getInstance().selectAll();
+        for (Question q: question) {
+            System.out.println(q);
+
+        }
+    }
+
     public Theme selectThemeAction(){
 
         Theme ceTheme = new Theme();
@@ -70,7 +81,8 @@ public class TestController extends HttpServlet {
                 }
             }else{
                // selectThemeAction();
-                testAction();
+                //testAction();
+                selectAll();
                 index(request,response);
             }
             if(continu){
