@@ -4,6 +4,9 @@
 <jsp:include page="../parts/menu.jsp"/>
 <div class="row">
     <div class="col-md-12">
+        <c:if test="${error != null}">
+            <span class="text-danger">${error}</span>
+        </c:if>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -22,7 +25,7 @@
                     <td>
                         <div class="col-xs-6 col-md-3">
                             <a href="#" class="thumbnail">
-                                <img src="http://localhost:8080/img/uploaded/${question.image}" alt="">
+                                <img src="http://localhost:8080/data/img/${question.image}.jpg" alt="">
                             </a>
                         </div>
                     </td>

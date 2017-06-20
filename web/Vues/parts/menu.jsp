@@ -42,7 +42,7 @@
                         <li><a href="${pageContext.request.contextPath}/Question">Listes des questions</a></li>
                         <c:if test="${sessionScope.formateur != null}">
                             <li class="divider"></li>
-                            <li><a href="${pageContext.request.contextPath}/Theme?action=new">Créer une question</a></li>
+                            <li><a href="${pageContext.request.contextPath}/Question?action=new">Créer une question</a></li>
                         </c:if>
                     </ul>
                 </li>

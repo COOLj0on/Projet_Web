@@ -1,16 +1,17 @@
 package fr.eni.projet.web.controller;
 
 import fr.eni.projet.web.bean.Question;
-import fr.eni.projet.web.bean.Theme;
 import fr.eni.projet.web.dao.question.QuestionDaoImpl;
-import fr.eni.projet.web.dao.theme.ThemeDAOImpl;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.Part;
+import java.io.*;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import java.util.Map;
  * Created by rgars2016 on 20/06/2017.
  */
 @WebServlet("/Question")
+@MultipartConfig
 public class QuestionController extends HttpServlet {
     private String nextAction = "Vues/Question/index.jsp";
 
@@ -36,6 +38,27 @@ public class QuestionController extends HttpServlet {
         nextAction = "/Vues/Question/index.jsp";
     }
 
+    public void addQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Question question = new Question();
+        String fileName = String.valueOf(new Timestamp(System.currentTimeMillis()).getTime());
+        question.setEnonce(request.getParameter("enonce"));
+        Part filePart = request.getPart("image"); // Retrieves <input type="file" name="file">
+        InputStream fileContent = filePart.getInputStream();
+        byte[] buffer = new byte[fileContent.available()];
+        fileContent.read(buffer);
+
+        File targetFile = new File(request.getServletContext().getRealPath("/")+"data/img/"+ fileName +".jpg");
+        OutputStream outStream = new FileOutputStream(targetFile);
+        outStream.write(buffer);
+        question.setImage(fileName);
+
+        int result = QuestionDaoImpl.getInstance().insert(question,Integer.parseInt(request.getParameter("theme")));
+        if(result != 1){
+            request.setAttribute("error","L'insertion ne c'est pas déroulée correctement");
+        }
+        index(request,response);
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -46,6 +69,13 @@ public class QuestionController extends HttpServlet {
         try{
             if(params.containsKey("action")){
                 switch (params.get("action")[0]){
+                    case "new":
+                        if("GET".equals(request.getMethod())){
+                            nextAction = "/Vues/Question/authentified/create.jsp";
+                        }else{
+                            addQuestion(request,response);
+                        }
+                        break;
                     default:
 
                         break;
