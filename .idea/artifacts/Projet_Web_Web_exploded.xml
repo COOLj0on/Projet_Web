@@ -7,7 +7,11 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Projet_Web_ENI" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="lib" />
+        </element>
       </element>
+      <element id="javaee-facet-resources" facet="Projet_Web_ENI/web/Web" />
     </root>
   </artifact>
 </component>
