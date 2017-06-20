@@ -27,6 +27,17 @@ public class FormateurController extends HttpServlet {
 		nextAction = "/Vues/Formateur/authent.jsp";
     }
 
+	public void deconnect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		HttpSession session = request.getSession();
+		if((boolean)session.getAttribute("isAuthent") == true){
+			session.removeAttribute("formateur");
+			session.setAttribute("isAuthent",false);
+		}else{
+			request.setAttribute("error", "Vous n'êtes pas connecté.");
+		}
+		nextAction = "/Vues/index.jsp";
+	}
+
 	public void connect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		nextAction 					= "/Vues/Formateur/authent.jsp";
     	String password 			= request.getParameter("password");
@@ -61,6 +72,9 @@ public class FormateurController extends HttpServlet {
 				}
 			} else if(params.containsKey("action")){
 				switch (params.get("action")[0]){
+					case "deconnecter":
+						deconnect(request,response);
+						break;
 					default:
 
 						break;

@@ -11,6 +11,7 @@
                     <label for="identifiant" class="col-lg-3 control-label">Identifiant</label>
                     <div class="col-lg-9">
                         <input type="text" class="form-control" name="identifiant" id="identifiant" placeholder="identifiant">
+                        <p class="help-block">Seules les adresses @campus-eni.fr sont acceptées</p>
                     </div>
                 </div>
                 <div class="form-group">

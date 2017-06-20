@@ -34,7 +34,14 @@
                 </c:when>
                 <c:when test = "${sessionScope.formateur != null}">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a><span class="glyphicon glyphicon-user"></span> Bonjour, ${sessionScope.formateur.prenom}</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Bonjour, ${sessionScope.formateur.prenom} <b class="caret"></b></a>
+                            <span class="dropdown-arrow"></span>
+                            <ul class="dropdown-menu">
+                                <li class="divider"></li>
+                                <li><a href="<c:url value="http://localhost:8080/Formateur?action=deconnecter"></c:url>"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>
+                            </ul>
+                        </li>
                         <li><a><span class="glyphicon glyphicon-cog"></span></a></li>
                         <li><a><span class="glyphicon glyphicon-envelope"></span><span class="badge">5</span></a></li>
                     </ul>
