@@ -58,7 +58,7 @@ public class TestController extends HttpServlet {
                         break;
                 }
             }else{
-                testAction();
+                //testAction();
                 index(request,response);
             }
             if(continu){
