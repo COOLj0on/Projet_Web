@@ -3,6 +3,7 @@ package fr.eni.projet.web.dao.question;
 import fr.eni.projet.web.bean.Question;
 import fr.eni.projet.web.bean.Theme;
 import fr.eni.projet.web.dao.ConnectionPool;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,9 +50,50 @@ public class QuestionDaoImpl implements QuestionDao {
         }
     }
 
-    /*select
-    Update
-    Delete
-     */
+    public void update(Question modifQuestion) throws Exception{
+        Connection con = null;
+        con = ConnectionPool.getConPool();
+        String sql = "UPDATE Question SET enonce=? AND image=? AND fk_theme=? WHERE idQuestion =?";
 
+        PreparedStatement stmt;
+
+        try{
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1,modifQuestion.getEnonce());
+            stmt.setString(2,modifQuestion.getImage());
+            stmt.setInt(3, modifQuestion.getTheme().getIdTheme());
+            stmt.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void delete(Question supprQuestion) throws Exception{
+        Connection con = null;
+        con = ConnectionPool.getConPool();
+        String sql = "DELETE FROM Question WHERE idQuestion =?";
+
+        PreparedStatement stmt;
+
+        try{
+            stmt = con.prepareStatement(sql);
+            stmt.executeUpdate();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

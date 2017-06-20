@@ -9,6 +9,9 @@ import fr.eni.projet.web.bean.Theme;
 public interface QuestionDao {
 
     public void insert(Question uneQuestion, Integer idTheme) throws Exception;
+    public void update(Question modifQuestion) throws Exception;
+    public void delete(Question supprQuestion) throws Exception;
 
 
-}
+
+    }
