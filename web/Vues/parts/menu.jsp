@@ -17,17 +17,17 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">QCM <b class="caret"></b></a>
                     <span class="dropdown-arrow"></span>
                     <ul class="dropdown-menu">
-                        <li><a href="<c:url value="http://localhost:8080/QCM/Test"></c:url>">Listes des QCM</a></li>
+                        <li><a href="<c:url value="http://localhost:8080/Test"></c:url>">Listes des QCM</a></li>
                         <c:if test="${sessionScope.formateur != null}">
                             <li class="divider"></li>
-                            <li><a href="<c:url value="http://localhost:8080/QCM/Test?action=gerer"></c:url>">Gérer les
+                            <li><a href="<c:url value="http://localhost:8080/Test?action=gerer"></c:url>">Gérer les
                                 QCM</a></li>
                         </c:if>
                     </ul>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<c:url value="http://localhost:8080/QCM/Formateur"></c:url>">Se connecter</a></li>
+                <li><a href="<c:url value="http://localhost:8080/Formateur"></c:url>">Se connecter</a></li>
             </ul>
             <form class="navbar-form navbar-right" action="" role="search">
                 <div class="form-group">
