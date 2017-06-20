@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrateur on 19/06/2017.
@@ -35,10 +37,10 @@ public class ThemeDAOImpl implements ThemeDAO {
         con = ConnectionPool.getConPool();
         boolean flag = true;
 
-        String sql = "select * from theme t " +
+        String sql = "select * from Theme t " +
                 "left outer join Question q " +
                 "on t.idTheme = q.fk_theme " +
-                "where idTheme = ?";
+                "where t.idTheme = ?";
 
         PreparedStatement stmt;
         Theme ceTheme = null;
@@ -47,6 +49,7 @@ public class ThemeDAOImpl implements ThemeDAO {
 
             stmt = con.prepareStatement(sql);
             stmt.setInt(1, idTheme);
+
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -81,5 +84,34 @@ public class ThemeDAOImpl implements ThemeDAO {
 
 
         return ceTheme;
+    }
+
+    @Override
+    public List<Theme> selectAllTheme() {
+
+        Connection con = null;
+        con = ConnectionPool.getConPool();
+        List<Theme> lesThemes = new ArrayList<Theme>();
+
+        String sql = "select * from themes";
+        PreparedStatement stmt;
+
+        try {
+            stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next())
+            {
+                Theme leTheme = new Theme();
+                leTheme.setIdTheme(rs.getInt("idTheme"));
+                leTheme.setLibelle(rs.getString("libelle"));
+                lesThemes.add(leTheme);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lesThemes;
     }
 }

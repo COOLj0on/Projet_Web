@@ -60,7 +60,7 @@ public class TestController extends HttpServlet {
     public Theme selectThemeAction(){
 
         Theme ceTheme = new Theme();
-        ThemeDAOImpl.getInstance().selectThemeByID(1);
+        ceTheme = ThemeDAOImpl.getInstance().selectThemeByID(4);
 
         System.out.println(ceTheme);
         return ceTheme;
