@@ -3,6 +3,7 @@ package fr.eni.projet.web.controller;
 import fr.eni.projet.web.bean.Question;
 import fr.eni.projet.web.bean.Theme;
 import fr.eni.projet.web.dao.question.QuestionDaoImpl;
+import fr.eni.projet.web.dao.theme.ThemeDAOImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,6 +46,16 @@ public class TestController extends HttpServlet {
         }
     }
 
+    public Theme selectThemeAction(){
+
+        Theme ceTheme = new Theme();
+        ThemeDAOImpl.getInstance().selectThemeByID(1);
+
+        System.out.println(ceTheme);
+        return ceTheme;
+    }
+
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> params = request.getParameterMap();
         boolean continu = true;
@@ -58,7 +69,8 @@ public class TestController extends HttpServlet {
                         break;
                 }
             }else{
-                //testAction();
+               // selectThemeAction();
+                testAction();
                 index(request,response);
             }
             if(continu){

@@ -8,7 +8,11 @@
           <element id="module-output" name="Projet_Web" />
         </element>
         <element id="directory" name="lib">
+<<<<<<< Updated upstream
           <element id="library" level="project" name="lib" />
+=======
+          <element id="library" level="project" name="EE6" />
+>>>>>>> Stashed changes
         </element>
       </element>
     </root>

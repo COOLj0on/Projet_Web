@@ -35,9 +35,9 @@ public class ThemeDAOImpl implements ThemeDAO {
         con = ConnectionPool.getConPool();
         boolean flag = true;
 
-        String sql = "select * from theme t \n" +
-                "left outer join Question q \n" +
-                "on t.idTheme = q.fk_theme\n" +
+        String sql = "select * from theme t " +
+                "left outer join Question q " +
+                "on t.idTheme = q.fk_theme" +
                 "where idTheme = ?";
 
         PreparedStatement stmt;
