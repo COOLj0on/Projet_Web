@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface QuestionDao {
 
-//    public Question selectQuestionByID(Integer idQuestion);
+    public Question selectQuestionByID(Integer idQuestion);
     public List<Question> selectAll() throws Exception;
     public void insert(Question uneQuestion, Integer idTheme) throws Exception;
     public void update(Question modifQuestion) throws Exception;
