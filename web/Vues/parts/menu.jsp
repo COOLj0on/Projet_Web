@@ -8,7 +8,7 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
             </button>
-            <a class="navbar-brand" href="#">Flat UI</a>
+            <a class="navbar-brand" href="#">Portail ENI</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-01">
             <ul class="nav navbar-nav navbar-left">
@@ -26,19 +26,20 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="<c:url value="http://localhost:8080/Formateur"></c:url>">Se connecter</a></li>
-            </ul>
-            <form class="navbar-form navbar-right" action="" role="search">
-                <div class="form-group">
-                    <div class="input-group">
-                        <input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
-                        <span class="input-group-btn">
-                      <button type="submit" class="btn"><span class="glyphicon glyphicon-search"></span></button>
-                    </span>
-                    </div>
-                </div>
-            </form>
+            <c:choose>
+                <c:when test = "${sessionScope.formateur == null}">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="<c:url value="http://localhost:8080/Formateur"></c:url>">Se connecter</a></li>
+                    </ul>
+                </c:when>
+                <c:when test = "${sessionScope.formateur != null}">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a><span class="glyphicon glyphicon-user"></span> Bonjour, ${sessionScope.formateur.prenom}</a></li>
+                        <li><a><span class="glyphicon glyphicon-cog"></span></a></li>
+                        <li><a><span class="glyphicon glyphicon-envelope"></span><span class="badge">5</span></a></li>
+                    </ul>
+                </c:when>
+            </c:choose>
         </div><!-- /.navbar-collapse -->
     </nav>
 </div>
