@@ -1,6 +1,5 @@
 package fr.eni.projet.web.bean;
 
-import com.google.gson.annotations.SerializedName;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
@@ -13,16 +12,16 @@ public class Reponse {
     @JsonProperty("libelle")
     private String libelle;
 
-    @JsonProperty("estBonne")
-    private Boolean estBonne;
+    @JsonProperty("type")
+    private Boolean type;
 
     public Reponse() {
     }
 
-    public Reponse(Integer idReponse, String libelle, Boolean estBonne) {
+    public Reponse(Integer idReponse, String libelle, Boolean type) {
         this.setIdReponse(idReponse);
         this.setLibelle(libelle);
-        this.setEstBonne(estBonne);
+        this.setType(type);
     }
 
     public Integer getIdReponse() {
@@ -41,12 +40,12 @@ public class Reponse {
         this.libelle = libelle;
     }
 
-    public Boolean getEstBonne() {
-        return estBonne;
+    public Boolean getType() {
+        return type;
     }
 
-    public void setEstBonne(Boolean estBonne) {
-        this.estBonne = estBonne;
+    public void setType(Boolean type) {
+        this.type = type;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class Reponse {
         return "Reponse{" +
                 "idReponse=" + idReponse +
                 ", libelle='" + libelle + '\'' +
-                ", estBonne=" + estBonne +
+                ", type=" + type +
                 '}';
     }
 }

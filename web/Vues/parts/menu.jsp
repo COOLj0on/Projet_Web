@@ -5,7 +5,7 @@
 <div class="row">
     <nav class="navbar navbar-embossed" role="navigation">
         <div class="navbar-header">
-            <button estBonne="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
                 <span class="sr-only">Toggle navigation</span>
             </button>
             <a class="navbar-brand" href="#">Portail ENI</a>

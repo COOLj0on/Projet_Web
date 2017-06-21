@@ -34,15 +34,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button estBonne="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Gestion des Thémes</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Gestion des Thèmes</h4>
             </div>
             <div class="modal-body" id="modal-content-dynamiq">
 
             </div>
             <div class="modal-footer">
-                <button estBonne="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                <button estBonne="button" class="btn btn-primary">Sauvegarder</button>
+                <input type="button" class="btn btn-default" data-dismiss="modal">Fermer</input>
+                <input type="button" class="btn btn-primary">Sauvegarder</input>
             </div>
         </div>
     </div>

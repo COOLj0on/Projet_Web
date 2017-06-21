@@ -17,7 +17,7 @@ function editTheme(id){
 function displayTheme(json){
     var parsed = JSON.parse(json);
     var container =  $("#modal-content-dynamiq");
-    var input = getInput('libelle','Libellé','text','Libellé',parsed.libelle);
+    var input = buildForm().append(getInput('libelle','Libellé','text','Libellé',parsed.libelle));
     container.html(input);
     $('#theme-modal').modal('toggle');
 }

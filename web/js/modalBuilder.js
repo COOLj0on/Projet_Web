@@ -8,3 +8,8 @@ function getInput(name,label,type, placeholder, data){
             .append($('<input value="'+data+'" type="text" class="form-control" name="'+name+'" id="'+name+'" placeholder="'+placeholder+'">')));
     return output;
 }
+
+function buildForm(){
+    var output = $('<form method="" action="">');
+    return output;
+}
