@@ -146,4 +146,35 @@ public class ThemeDAOImpl implements ThemeDAO {
 
         return res;
     }
+
+    @Override
+    public int delete(Integer id) {
+        Integer res = 1;
+
+        Connection con = null;
+        con = ConnectionPool.getConPool();
+        String sql = "Delete from Theme Where idTheme = ?";
+
+        PreparedStatement stmt;
+
+        try{
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+        } catch (SQLException e){
+
+            e.printStackTrace();
+            res = 2;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                res = 3;
+            }
+        }
+
+        return res;
+    }
 }

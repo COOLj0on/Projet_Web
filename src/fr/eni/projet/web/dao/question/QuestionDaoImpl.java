@@ -1,6 +1,7 @@
 package fr.eni.projet.web.dao.question;
 
 import fr.eni.projet.web.bean.Question;
+import fr.eni.projet.web.bean.Theme;
 import fr.eni.projet.web.dao.ConnectionPool;
 
 import java.sql.Connection;
@@ -26,6 +27,7 @@ public class QuestionDaoImpl implements QuestionDao {
         return instance;
     }
 
+    //Selectionner toutes les questions par rapport à un theme
     public Question selectQuestionByID(Integer idTheme) {
         Connection con = null;
         con = ConnectionPool.getConPool();
@@ -57,26 +59,49 @@ public class QuestionDaoImpl implements QuestionDao {
                 e.printStackTrace();
             }
         }
+
     return cesQuestion;
     }
 
-
+    //Selection de toutes les questions
     public List<Question> selectAll() throws Exception{
         List<Question> result = new ArrayList<Question>();
+        List<Theme> listTheme = new ArrayList<Theme>();
 
         Connection con = null;
         con = ConnectionPool.getConPool();
+        boolean flag = true;
         String sql = "SELECT * FROM Question q LEFT JOIN Theme t ON t.idTheme = q.fk_theme";
 
         PreparedStatement stmt;
+       // boolean existe = false;
         try {
             stmt = con.prepareStatement(sql);
-
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                boolean existe = false;
                 Question ques = new Question();
+                ques.setIdQuestion(rs.getInt("idQuestion"));
                 ques.setEnonce(rs.getString("enonce"));
                 ques.setImage(rs.getString("image"));
+
+
+                Theme ceTheme = new Theme();
+                ceTheme.setIdTheme(rs.getInt("idTheme"));
+                for( int i = 0; i < listTheme.size(); i++)
+                {
+                    if (listTheme.get(i).getIdTheme().equals(ceTheme.getIdTheme()))
+                    {
+                        existe = true;
+                        ques.setTheme(listTheme.get(i));
+                    }
+                }
+                if (existe ==false)
+                {
+                    ceTheme.setLibelle(rs.getString("libelle"));
+                    listTheme.add(ceTheme);
+                    ques.setTheme(ceTheme);
+                }
 
                 result.add(ques);
             }
@@ -84,7 +109,6 @@ public class QuestionDaoImpl implements QuestionDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return result;
     }
 
@@ -142,7 +166,9 @@ public class QuestionDaoImpl implements QuestionDao {
     }
 
     @Override
-    public void delete(Question supprQuestion) throws Exception{
+    public int delete(Integer idQues) {
+        Integer res = 1;
+
         Connection con = null;
         con = ConnectionPool.getConPool();
         String sql = "DELETE FROM Question WHERE idQuestion =?";
@@ -151,17 +177,20 @@ public class QuestionDaoImpl implements QuestionDao {
 
         try{
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, supprQuestion.getIdQuestion());
+            stmt.setInt(1, idQues);
             stmt.executeUpdate();
 
         } catch (SQLException e){
             e.printStackTrace();
+            res = 2;
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
+                res = 3;
             }
         }
+        return res;
     }
 }

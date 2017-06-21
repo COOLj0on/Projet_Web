@@ -27,6 +27,20 @@ public class QuestionController extends HttpServlet {
 
     }
 
+    public int getIdFromParam(Map<String, String[]> params){
+        Integer id = null;
+        if(params.containsKey("id") && params.get("id")[0] != null){
+            id = Integer.parseInt(params.get("id")[0]);
+        }else{
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return id;
+    }
+
     public void index(HttpServletRequest request, HttpServletResponse response){
         List<Question> questions = null;
         try {
@@ -76,6 +90,10 @@ public class QuestionController extends HttpServlet {
                             addQuestion(request,response);
                         }
                         break;
+                    case "delete":
+                        int id = getIdFromParam(params);
+                        deleteQuestion(request,response,id);
+                        break;
                     default:
 
                         break;
@@ -90,4 +108,13 @@ public class QuestionController extends HttpServlet {
             e.printStackTrace();
         }
     }
+
+    public void deleteQuestion(HttpServletRequest request, HttpServletResponse response,int idQues) throws Exception{
+        int result = QuestionDaoImpl.getInstance().delete(idQues);
+        if(result != 1){
+            request.setAttribute("error", "Erreur suppression question");
+        }
+        index(request,response);
+    }
+
 }

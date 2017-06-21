@@ -13,7 +13,7 @@ public interface QuestionDao {
     public List<Question> selectAll() throws Exception;
     public int insert(Question uneQuestion, Integer idTheme) throws Exception;
     public void update(Question modifQuestion) throws Exception;
-    public void delete(Question supprQuestion) throws Exception;
+    public int delete(Integer idQues);
 
 
 
