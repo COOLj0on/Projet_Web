@@ -63,9 +63,7 @@ public class ThemeController extends HttpServlet {
     }
 
     public void deleteTheme(HttpServletRequest request, HttpServletResponse response,int id) throws Exception{
-        Theme theme = new Theme();
-        theme.setIdTheme(id);
-        int result = 1;//ThemeDAOImpl.getInstance().delete(theme);
+        int result = ThemeDAOImpl.getInstance().delete(id);
         if(result != 1){
             request.setAttribute("error","La suppression ne c'est pas déroulée correctement");
         }

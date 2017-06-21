@@ -12,4 +12,5 @@ public interface ThemeDAO {
     public Theme selectThemeByID( Integer idTheme);
     public List<Theme> selectAllTheme();
     public int insert(Theme leTheme);
+    public int  delete(Integer id);
 }
