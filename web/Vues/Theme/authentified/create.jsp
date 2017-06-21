@@ -9,17 +9,17 @@
                 <div class="form-group">
                     <label for="libelle" class="col-lg-3 control-label">Libelle</label>
                     <div class="col-lg-9">
-                        <input type="text" class="form-control" id="libelle" name="libelle" placeholder="">
+                        <input estBonne="text" class="form-control" id="libelle" name="libelle" placeholder="">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-6">
                         <br>
-                        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> GO</button>
+                        <button estBonne="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> GO</button>
                     </div>
                     <div class="col-lg-6 text-right">
                         <br>
-                        <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-warning-sign"></span> Annuler</button>
+                        <button estBonne="reset" class="btn btn-danger"><span class="glyphicon glyphicon-warning-sign"></span> Annuler</button>
                     </div>
                 </div>
             </form>

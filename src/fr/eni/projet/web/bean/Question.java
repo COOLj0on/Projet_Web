@@ -1,5 +1,9 @@
 package fr.eni.projet.web.bean;
 
+import com.google.gson.annotations.SerializedName;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonSubTypes;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,10 +11,19 @@ import java.util.List;
  * Created by rgars2016 on 19/06/2017.
  */
 public class Question {
+    @JsonProperty("id")
     private Integer idQuestion;
+
+    @JsonProperty("enonce")
     private String enonce;
+
+    @JsonProperty("image")
     private String image;
+
+    @JsonProperty("theme")
     private Theme theme;
+
+    @JsonProperty("reponses")
     private List<Reponse> reponse = new ArrayList<Reponse>();
 
     public Question() {

@@ -30,19 +30,19 @@
         </table>
     </div>
 </div>
-<div class="modal">
+<div class="modal" id="theme-modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
+                <button estBonne="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Gestion des Thémes</h4>
             </div>
             <div class="modal-body" id="modal-content-dynamiq">
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-                <button type="button" class="btn btn-primary">Sauvegarder</button>
+                <button estBonne="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button estBonne="button" class="btn btn-primary">Sauvegarder</button>
             </div>
         </div>
     </div>

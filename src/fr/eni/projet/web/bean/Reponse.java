@@ -1,20 +1,28 @@
 package fr.eni.projet.web.bean;
 
+import com.google.gson.annotations.SerializedName;
+import org.codehaus.jackson.annotate.JsonProperty;
+
 /**
  * Created by rgars2016 on 19/06/2017.
  */
 public class Reponse {
+    @JsonProperty("id")
     private Integer idReponse;
+
+    @JsonProperty("libelle")
     private String libelle;
-    private Boolean type;
+
+    @JsonProperty("estBonne")
+    private Boolean estBonne;
 
     public Reponse() {
     }
 
-    public Reponse(Integer idReponse, String libelle, Boolean type) {
+    public Reponse(Integer idReponse, String libelle, Boolean estBonne) {
         this.setIdReponse(idReponse);
         this.setLibelle(libelle);
-        this.setType(type);
+        this.setEstBonne(estBonne);
     }
 
     public Integer getIdReponse() {
@@ -33,12 +41,12 @@ public class Reponse {
         this.libelle = libelle;
     }
 
-    public Boolean getType() {
-        return type;
+    public Boolean getEstBonne() {
+        return estBonne;
     }
 
-    public void setType(Boolean type) {
-        this.type = type;
+    public void setEstBonne(Boolean estBonne) {
+        this.estBonne = estBonne;
     }
 
     @Override
@@ -46,7 +54,7 @@ public class Reponse {
         return "Reponse{" +
                 "idReponse=" + idReponse +
                 ", libelle='" + libelle + '\'' +
-                ", type=" + type +
+                ", estBonne=" + estBonne +
                 '}';
     }
 }
