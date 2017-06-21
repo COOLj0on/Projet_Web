@@ -93,7 +93,7 @@ public class ThemeDAOImpl implements ThemeDAO {
         con = ConnectionPool.getConPool();
         List<Theme> lesThemes = new ArrayList<Theme>();
 
-        String sql = "select * from themes";
+        String sql = "select * from Theme";
         PreparedStatement stmt;
 
         try {
@@ -113,5 +113,37 @@ public class ThemeDAOImpl implements ThemeDAO {
         }
 
         return lesThemes;
+    }
+
+    @Override
+    public int insert(Theme leTheme) {
+
+        Integer res = 1;
+        Connection con = null;
+        con = ConnectionPool.getConPool();
+        String sql = "INSERT INTO Theme(libelle) VALUES(?)";
+
+        PreparedStatement stmt;
+
+        try{
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1,leTheme.getLibelle());
+
+            stmt.executeUpdate();
+        } catch (SQLException e){
+
+            e.printStackTrace();
+            res = 2;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                res = 3;
+            }
+        }
+
+
+        return res;
     }
 }
