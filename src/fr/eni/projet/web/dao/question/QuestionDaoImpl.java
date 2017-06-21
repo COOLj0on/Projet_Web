@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -28,6 +29,7 @@ public class QuestionDaoImpl implements QuestionDao {
         return instance;
     }
 
+    //Selectionner toutes les questions par rapport à un theme
     public Question selectQuestionByID(Integer idTheme) {
         Connection con = null;
         con = ConnectionPool.getConPool();
@@ -63,20 +65,20 @@ public class QuestionDaoImpl implements QuestionDao {
     return cesQuestion;
     }
 
-
+    //Selection de toutes les questions
     public List<Question> selectAll() throws Exception{
         List<Question> result = new ArrayList<Question>();
         List<Theme> listTheme = new ArrayList<Theme>();
 
         Connection con = null;
         con = ConnectionPool.getConPool();
+        boolean flag = true;
         String sql = "SELECT * FROM Question q LEFT JOIN Theme t ON t.idTheme = q.fk_theme";
 
         PreparedStatement stmt;
        // boolean existe = false;
         try {
             stmt = con.prepareStatement(sql);
-
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 boolean existe = false;

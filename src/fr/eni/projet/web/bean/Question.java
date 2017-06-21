@@ -66,10 +66,11 @@ public class Question {
 
     @Override
     public String toString() {
-        return "question{" +
+        return "Question{" +
                 "idQuestion=" + idQuestion +
                 ", enonce='" + enonce + '\'' +
                 ", image='" + image + '\'' +
+                ", theme=" + theme +
                 ", reponse=" + reponse +
                 '}';
     }
