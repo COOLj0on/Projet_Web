@@ -4,13 +4,11 @@ import fr.eni.projet.web.bean.Question;
 import fr.eni.projet.web.bean.Theme;
 import fr.eni.projet.web.dao.ConnectionPool;
 
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -111,7 +109,6 @@ public class QuestionDaoImpl implements QuestionDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //System.out.println(listTheme.size());
         return result;
     }
 
@@ -169,7 +166,9 @@ public class QuestionDaoImpl implements QuestionDao {
     }
 
     @Override
-    public void delete(Question supprQuestion) throws Exception{
+    public int delete(Integer idQues) {
+        Integer res = 1;
+
         Connection con = null;
         con = ConnectionPool.getConPool();
         String sql = "DELETE FROM Question WHERE idQuestion =?";
@@ -178,17 +177,20 @@ public class QuestionDaoImpl implements QuestionDao {
 
         try{
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, supprQuestion.getIdQuestion());
+            stmt.setInt(1, idQues);
             stmt.executeUpdate();
 
         } catch (SQLException e){
             e.printStackTrace();
+            res = 2;
         } finally {
             try {
                 con.close();
             } catch (SQLException e) {
                 e.printStackTrace();
+                res = 3;
             }
         }
+        return res;
     }
 }
