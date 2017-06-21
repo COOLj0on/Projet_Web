@@ -45,8 +45,8 @@ public class ThemeController extends HttpServlet {
     }
 
     public void index(HttpServletRequest request, HttpServletResponse response){
-        List<Theme> formations = ThemeDAOImpl.getInstance().selectAllTheme();
-        this.getServletContext().setAttribute("formations", formations);
+        List<Theme> themes = ThemeDAOImpl.getInstance().selectAllTheme();
+        this.getServletContext().setAttribute("themes", themes);
         nextAction = "/Vues/Theme/index.jsp";
     }
 
@@ -77,7 +77,8 @@ public class ThemeController extends HttpServlet {
         formation.setLibelle(request.getParameter("libelle"));
         //TODO:Ajouter des questions
 
-        int result = 1;//ThemeDAOImpl.getInstance().insert(formation);
+        int result = 1;
+        result = ThemeDAOImpl.getInstance().insert(formation);
         if(result != 1){
             request.setAttribute("error","L'insertion ne c'est pas déroulée correctement");
         }
@@ -104,7 +105,7 @@ public class ThemeController extends HttpServlet {
                         break;
                     case "new" :
                         if("GET".equals(request.getMethod())){
-                            nextAction = "/Vues/Theme/create.jsp";
+                            nextAction = "/Vues/Theme/authentified/create.jsp";
                         }else{
                             addTheme(request,response);
                         }
