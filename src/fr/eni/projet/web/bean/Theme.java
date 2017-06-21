@@ -1,11 +1,7 @@
 package fr.eni.projet.web.bean;
 
-import com.google.gson.annotations.SerializedName;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.annotate.JsonSubTypes;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 /**
  * Created by rgars2016 on 19/06/2017.
