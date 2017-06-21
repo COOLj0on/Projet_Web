@@ -38,8 +38,6 @@ public class ThemeDAOImpl implements ThemeDAO {
         boolean flag = true;
 
         String sql = "select * from Theme t " +
-                "left outer join Question q " +
-                "on t.idTheme = q.fk_theme " +
                 "where t.idTheme = ?";
 
         PreparedStatement stmt;
@@ -53,22 +51,11 @@ public class ThemeDAOImpl implements ThemeDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                if(flag)
-                {
+
                     ceTheme = new Theme();
 
                     ceTheme.setIdTheme(rs.getInt("idTheme"));
                     ceTheme.setLibelle(rs.getString("libelle"));
-                    //ceTheme.se((rs.getFloat("distance")));
-
-                }
-                Question laQuestion = new Question();
-                laQuestion.setIdQuestion(rs.getInt("idQuestion"));
-                laQuestion.setEnonce(rs.getString("enonce"));
-                laQuestion.setImage(rs.getNString("image"));
-                laQuestion.setTheme(ceTheme);
-                ceTheme.getQuestion().add(laQuestion);
-                flag = false;
 
             }
 

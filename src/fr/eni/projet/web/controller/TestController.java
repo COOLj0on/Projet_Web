@@ -51,10 +51,10 @@ public class TestController extends HttpServlet {
     public void selectAll() throws Exception {
         List<Question> question = new ArrayList<Question>();
         question = QuestionDaoImpl.getInstance().selectAll();
-        for (Question q: question) {
-            System.out.println(q);
-
-        }
+//        for (Question q: question) {
+//            System.out.println(q);
+//
+//        }
     }
 
     public Theme selectThemeAction(){
