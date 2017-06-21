@@ -48,6 +48,5 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-src/fr/eni/projet/service/
 
 \.idea/artifacts/Projet_Web_Web_exploded\.xml
