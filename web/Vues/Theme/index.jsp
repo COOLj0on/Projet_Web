@@ -41,8 +41,7 @@
 
             </div>
             <div class="modal-footer">
-                <input type="button" class="btn btn-default" data-dismiss="modal">Fermer</input>
-                <input type="button" class="btn btn-primary">Sauvegarder</input>
+
             </div>
         </div>
     </div>

@@ -13,3 +13,10 @@ function buildForm(){
     var output = $('<form method="" action="">');
     return output;
 }
+
+function addBtn(){
+    var output = $('<div class="modal-footer">')
+            .append('<input type="button" class="btn btn-default" data-dismiss="modal" value="Fermer"/>' +
+                '<input type="submit" class="btn btn-primary" value="Sauvegarder">');
+    return output;
+}
