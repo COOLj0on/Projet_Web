@@ -20,7 +20,7 @@
                     <td>
                         <div class="btn-group btn-group-sm" role="group" aria-label="">
                             <a href="${pageContext.request.contextPath}/Question?theme=${theme.idTheme}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-list" aria-hidden="true"></span>Questions</a>
-                            <a href="${pageContext.request.contextPath}/Theme?action=edit&id=${theme.idTheme}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Modifier</a>
+                            <button onclick="editTheme(${theme.idTheme})" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Modifier</button>
                             <a href="${pageContext.request.contextPath}/Theme?action=delete&id=${theme.idTheme}" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Supprimer</a>
                         </div>
                     </td>
@@ -30,4 +30,22 @@
         </table>
     </div>
 </div>
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body" id="modal-content-dynamiq">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary">Sauvegarder</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <jsp:include page="../parts/footer.jsp"/>

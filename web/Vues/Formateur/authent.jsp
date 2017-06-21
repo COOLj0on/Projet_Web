@@ -6,7 +6,7 @@
     <div class="col-md-offset-4 col-md-4">
         <fieldset>
             <legend>Connexion</legend>
-            <form action="" method="">
+            <form action="" method="post">
                 <div class="form-group">
                     <label for="identifiant" class="col-lg-3 control-label">Identifiant</label>
                     <div class="col-lg-9">
