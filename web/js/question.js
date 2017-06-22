@@ -28,7 +28,7 @@ $(function() {
             // place the person.given_name value into the textfield called 'select_origin'...
             $('#theme').val(ui.item.label);
             // and place the person.id into the hidden textfield called 'link_origin_id'.
-            $('#link_origin_id').val(ui.item.id);
+            $('#themeId').val(ui.item.value);
             return false;
         }
     });

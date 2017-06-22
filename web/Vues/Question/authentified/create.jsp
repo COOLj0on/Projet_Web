@@ -23,7 +23,8 @@
                 <div class="form-group">
                     <label for="theme" class="col-lg-3 control-label">Thème</label>
                     <div class="col-lg-9">
-                        <input type="text" class="form-control" id="theme" name="theme" placeholder="Sélectionnez un thème">
+                        <input type="text" class="form-control" id="theme" placeholder="Sélectionnez un thème">
+                        <input type="hidden" class="form-control" id="themeId" name="theme">
                     </div>
                 </div>
                 <div class="form-group">
