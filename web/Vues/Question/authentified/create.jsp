@@ -35,7 +35,7 @@
                             <input type="text" class="form-control">
                             <span class="input-group-btn">
                             <button class="btn btn-default" onclick="addQuestionLine();" type="button"><span class="glyphicon glyphicon-plus-sign"></span></button>
-                            <button class="btn btn-default" onclick="deleteQuestionLine(this);" type="button"><span class="glyphicon glyphicon-trash"></span></button>
+                            <button class="btn btn-danger" onclick="deleteQuestionLine(this);" type="button"><span class="glyphicon glyphicon-trash"></span></button>
                         </span>
                         </div>
                     </div>
