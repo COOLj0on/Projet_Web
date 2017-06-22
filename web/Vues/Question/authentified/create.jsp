@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:include page="../../parts/header.jsp"/>
 <jsp:include page="../../parts/menu.jsp"/>
+<script src="js/question.js"></script>
+
 <div class="row">
     <div class="col-md-offset-4 col-md-4">
         <fieldset>
@@ -38,35 +40,4 @@
         </fieldset>
     </div>
 </div>
-<script>
-    $( function() {
-        var availableTags = [
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
-        ];
-        $( "#theme" ).autocomplete({
-            source: availableTags
-        });
-    } );
-</script>
 <jsp:include page="../../parts/footer.jsp"/>

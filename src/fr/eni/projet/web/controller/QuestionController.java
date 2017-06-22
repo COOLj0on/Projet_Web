@@ -1,7 +1,11 @@
 package fr.eni.projet.web.controller;
 
+import fr.eni.projet.service.resource.ThemeRest;
 import fr.eni.projet.web.bean.Question;
+import fr.eni.projet.web.bean.Theme;
 import fr.eni.projet.web.dao.question.QuestionDaoImpl;
+import fr.eni.projet.web.dao.theme.ThemeDAOImpl;
+import org.glassfish.hk2.api.Factory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -10,10 +14,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.ws.rs.client.Client;
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static javax.xml.ws.Endpoint.create;
 
 /**
  * Created by rgars2016 on 20/06/2017.
@@ -73,6 +83,10 @@ public class QuestionController extends HttpServlet {
         index(request,response);
     }
 
+    public void createQuestion(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        nextAction = "/Vues/Question/authentified/create.jsp";
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request,response);
     }
@@ -85,7 +99,7 @@ public class QuestionController extends HttpServlet {
                 switch (params.get("action")[0]){
                     case "new":
                         if("GET".equals(request.getMethod())){
-                            nextAction = "/Vues/Question/authentified/create.jsp";
+                            createQuestion(request,response);
                         }else{
                             addQuestion(request,response);
                         }

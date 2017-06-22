@@ -7,6 +7,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("/Theme")
 public class ThemeRest {
@@ -18,6 +19,18 @@ public class ThemeRest {
         Theme theme =  null;
         try {
             return theme = ThemeDAOImpl.getInstance().selectThemeByID(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return theme;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Theme> getAll() {
+        List<Theme> theme =  null;
+        try {
+            return theme = ThemeDAOImpl.getInstance().selectAllTheme();
         } catch (Exception e) {
             e.printStackTrace();
         }
