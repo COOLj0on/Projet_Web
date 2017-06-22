@@ -1,5 +1,4 @@
 $(function() {
-
     $('#theme').autocomplete({
         // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
         minLength: 1,
@@ -32,6 +31,24 @@ $(function() {
             return false;
         }
     });
-
-
 });
+function addQuestionLine(){
+    var output = $('<div class="form-group">'+
+        '<div class="input-group">'+
+        '<span class="input-group-addon">'+
+        '<input type="checkbox"/>'+
+        '</span>'+
+        '<input type="text" class="form-control">'+
+        '<span class="input-group-btn">'+
+        '<button class="btn btn-default" onclick="addQuestionLine();" type="button"><span class="glyphicon glyphicon-plus-sign"></span></button>'+
+        '<button class="btn btn-default" onclick="deleteQuestionLine(this);" type="button"><span class="glyphicon glyphicon-trash"></span></button>'+
+        '</span>'+
+        '</div>'+
+        '</div>');
+    $("#reponse-container").append(output);
+}
+
+function deleteQuestionLine(event){
+    var toRemove = $(event).closest('.form-group');
+    toRemove.remove();
+}

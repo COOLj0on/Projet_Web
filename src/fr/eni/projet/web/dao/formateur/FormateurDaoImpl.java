@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class FormateurDaoImpl implements FormateurDao {
 		private static FormateurDao instance;
-
+		private static int id_type_compte_formateur = 1;
 		
 		private FormateurDaoImpl() {
 
@@ -32,7 +32,7 @@ public class FormateurDaoImpl implements FormateurDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			String sql = "SELECT * FROM Formateur WHERE identifiant=? AND mdp=?";
+			String sql = "SELECT * FROM Compte WHERE identifiant=? AND mdp=? AND fk_Type_Compte = "+id_type_compte_formateur;
 			PreparedStatement stmt;
 			try {
 				stmt = con.prepareStatement(sql);

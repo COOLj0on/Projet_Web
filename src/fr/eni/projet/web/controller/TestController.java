@@ -1,6 +1,7 @@
 package fr.eni.projet.web.controller;
 
 import fr.eni.projet.web.bean.Question;
+import fr.eni.projet.web.bean.Test;
 import fr.eni.projet.web.bean.Theme;
 import fr.eni.projet.web.dao.question.QuestionDaoImpl;
 import fr.eni.projet.web.dao.theme.ThemeDAOImpl;
@@ -10,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.Part;
+import java.io.*;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -30,42 +33,18 @@ public class TestController extends HttpServlet {
         nextAction="/Vues/Test/index.jsp";
     }
 
-    public void testAction() throws Exception {
-        try{
-            String enonce = "Enonce test";
-            String image = "Image test";
-            Theme theme = new Theme();
-            theme.setLibelle("test");
-            Integer idTheme = 1;
-            Question newQuestion = new Question();
-            newQuestion.setEnonce(enonce);
-            newQuestion.setImage(image);
-            newQuestion.setTheme(theme);
-
-            QuestionDaoImpl.getInstance().insert(newQuestion, idTheme);
-        }catch (Exception e){
-            System.err.print(e);
-        }
+    public void createTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        nextAction = "/Vues/Question/authentified/create.jsp";
     }
 
-    public void selectAll() throws Exception {
-        List<Question> question = new ArrayList<Question>();
-        question = QuestionDaoImpl.getInstance().selectAll();
-//        for (Question q: question) {
-//            System.out.println(q);
-//
+    public void addTest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+//        Test test = new Test();
+//        int result = Test.getInstance().insert(test,Integer.parseInt(request.getParameter("theme")));
+//        if(result != 1){
+//            request.setAttribute("error","L'insertion ne c'est pas déroulée correctement");
 //        }
+        index(request,response);
     }
-
-    public Theme selectThemeAction(){
-
-        Theme ceTheme = new Theme();
-        ThemeDAOImpl.getInstance().selectThemeByID(1);
-
-        System.out.println(ceTheme);
-        return ceTheme;
-    }
-
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<String, String[]> params = request.getParameterMap();
@@ -73,16 +52,17 @@ public class TestController extends HttpServlet {
         try{
             if(params.containsKey("action")){
                 switch (params.get("action")[0]){
-                    case "":
-                        continu = false;
+                    case "new":
+                        if("GET".equals(request.getMethod())){
+                            createTest(request,response);
+                        }else{
+                            addTest(request,response);
+                        }
                         break;
                     default:
                         break;
                 }
             }else{
-               // selectThemeAction();
-                //testAction();
-                selectAll();
                 index(request,response);
             }
             if(continu){
