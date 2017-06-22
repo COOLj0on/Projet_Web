@@ -1,29 +1,37 @@
 $(function() {
-    $( "#theme" ).autocomplete({
-        source: function( request, response ) {
+
+    $('#theme').autocomplete({
+        // This shows the min length of charcters that must be typed before the autocomplete looks for a match.
+        minLength: 1,
+        source:function( request, response ) {
             $.ajax({
                 url: "http://localhost:8080/api/Theme",
                 dataType: "json",
                 success: function( data ) {
-                    var re = $.ui.autocomplete.escapeRegex(request.term);
-                    var matcher = new RegExp( "^" + re, "i" );
-                    response($.grep(data, function(item){
-                        return matcher.test(item.libelle)
-                    }));
+                    var all =  $.map(data, function (value, key) {
+                        return {
+                            label: value.libelle,
+                            value: value.id
+                        }
+                    });
+                    var results = $.ui.autocomplete.filter(all, request.term);
+                    response(results);
                 }
             });
         },
+        focus: function(event, ui) {
+            $('#theme').val(ui.item.label);
+            return false;
+        },
+        // Once a value in the drop down list is selected, do the following:
         select: function(event, ui) {
-            $('#theme').val(ui.item.libelle);
-            $('#theme').val(ui.item.id);
-
+            // place the person.given_name value into the textfield called 'select_origin'...
+            $('#theme').val(ui.item.label);
+            // and place the person.id into the hidden textfield called 'link_origin_id'.
+            $('#link_origin_id').val(ui.item.id);
+            return false;
         }
     });
+
+
 });
-/*
- *
- return {
- label: item.libelle,
- value: item.id
- }
- * */
